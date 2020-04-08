@@ -18,17 +18,9 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   final List<Transaction> transactions = [
     Transaction(
-      id: 't1',
-      title: 'New Shoes',
-      amount: 49.99,
-      date: DateTime.now()
-    ),
+        id: 't1', title: 'New Shoes', amount: 49.99, date: DateTime.now()),
     Transaction(
-        id: 't2',
-        title: 'New Toys',
-        amount: 99.99,
-        date: DateTime.now()
-    )
+        id: 't2', title: 'New Toys', amount: 99.99, date: DateTime.now())
   ];
 
   @override
@@ -55,10 +47,47 @@ class MyHomePage extends StatelessWidget {
               child: Text('Chart'),
             ),
           ),
-          Card(
-            color: Colors.red,
-            child: Text('lista of transactions'),
-          )
+          Column(
+            children: transactions.map((transaction) {
+              return Card(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                        color: Colors.black,
+                        width: 2,
+                      )),
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        transaction.amount.toString(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.purple),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          transaction.title,
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          transaction.date.toString(),
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              );
+            }).toList(),
+          ),
         ],
       ),
     );
