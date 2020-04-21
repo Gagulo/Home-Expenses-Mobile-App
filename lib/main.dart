@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Home Expenses',
       home: MyHomePage(),
+      theme: ThemeData(fontFamily: 'Quicksand'),
     );
   }
 }
@@ -22,10 +23,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-        id: 't1', title: 'New Shoes', amount: 49.99, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'New Toys', amount: 99.99, date: DateTime.now())
+//    Transaction(
+//        id: 't1', title: 'New Shoes', amount: 49.99, date: DateTime.now()),
+//    Transaction(
+//        id: 't2', title: 'New Toys', amount: 99.99, date: DateTime.now())
   ];
 
   void _newTransaction(String titleInput, double amountInput) {
@@ -55,7 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Expenses'),
+        title: Text(
+          'Home Expenses',
+          style: TextStyle(fontFamily: 'OpenSans'),
+        ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -86,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_circle),
+        child: Icon(Icons.add),
         onPressed: () => _startNewTransaction(context),
       ),
     );
