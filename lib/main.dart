@@ -23,12 +23,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _userTransactions = [
-//    Transaction(
-//        id: 't1', title: 'New Shoes', amount: 49.99, date: DateTime.now()),
-//    Transaction(
-//        id: 't2', title: 'New Toys', amount: 99.99, date: DateTime.now())
-  ];
+  final List<Transaction> _userTransactions = [];
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((transaction) {
@@ -38,11 +33,11 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _newTransaction(String titleInput, double amountInput) {
+  void _newTransaction(String titleInput, double amountInput, DateTime chosenDate) {
     final newTransaction = Transaction(
       title: titleInput,
       amount: amountInput,
-      date: DateTime.now(),
+      date: chosenDate,
       id: DateTime.now().toString(),
     );
 
